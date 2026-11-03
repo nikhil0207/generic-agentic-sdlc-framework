@@ -1,0 +1,5 @@
+{
+  "chat.useAgentSkills": true,
+  "chat.useAgentsMdFile": true,
+  "chat.useCustomAgentHooks": true
+}

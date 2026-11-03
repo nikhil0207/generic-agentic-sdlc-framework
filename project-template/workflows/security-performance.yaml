@@ -1,0 +1,7 @@
+id: SECURITY_PERFORMANCE
+description: Manually invoked security or performance assessment
+steps:
+  - {id: ASSESS, agent: 80-security-performance-engineer, gate: HUMAN}
+  - {id: REMEDIATE, agent: 40-developer, gate: REMEDIATION_APPROVAL, optional: true}
+  - {id: RETEST, agent: 80-security-performance-engineer, gate: PASS_REQUIRED, optional: true}
+  - {id: DOCUMENTATION, agent: 100-documentation, gate: POLICY}

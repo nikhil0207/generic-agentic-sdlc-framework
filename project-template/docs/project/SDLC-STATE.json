@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "project": "new-project",
+  "currentPhase": "planning",
+  "lastUpdated": null,
+  "gates": {
+    "planning": {"status": "PENDING", "approvedAt": null},
+    "requirements": {"status": "BLOCKED", "approvedAt": null},
+    "architecture": {"status": "BLOCKED", "approvedAt": null},
+    "implementationPlan": {"status": "BLOCKED", "approvedAt": null},
+    "testing": {"status": "BLOCKED", "approvedAt": null},
+    "review": {"status": "BLOCKED", "approvedAt": null}
+  }
+}

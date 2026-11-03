@@ -1,0 +1,29 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "https://generic-agentic-sdlc.invalid/schemas/agent-contract.schema.json",
+	"title": "Governed Agent Contract Foundation",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["id", "name", "purpose", "inputs", "outputs", "prohibitions", "role", "authority", "allowed_actions", "approval_gates", "stop_conditions", "evidence_obligations", "applicable_skills", "optional_provider_access", "failure_behavior", "handoff_rules", "non_success_statuses", "authority_intersection", "metadata_reconciliation"],
+	"properties": {
+		"id": {"type": "string", "pattern": "^(00|05|10|15|17|20|30|40|50|60|70|80|90|100)-[a-z0-9-]+$"},
+		"name": {"type": "string", "minLength": 1},
+		"role": {"type": "string", "minLength": 1},
+		"purpose": {"type": "string", "minLength": 1},
+		"authority": {"type": "array", "items": {"type": "string"}},
+		"inputs": {"type": "array", "items": {"type": "string"}},
+		"outputs": {"type": "array", "items": {"type": "string"}},
+		"allowed_actions": {"type": "array", "items": {"type": "string"}},
+		"prohibitions": {"type": "array", "items": {"type": "string"}},
+		"approval_gates": {"type": "array", "items": {"type": "string"}},
+		"stop_conditions": {"type": "array", "items": {"type": "string"}},
+		"evidence_obligations": {"type": "array", "items": {"type": "string"}},
+		"applicable_skills": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["skill_id", "compatible_version"], "properties": {"skill_id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"}, "compatible_version": {"type": "string", "minLength": 1}}}},
+		"optional_provider_access": {"type": "object", "additionalProperties": false, "properties": {"graphify": {"type": "boolean"}, "headroom": {"type": "boolean"}}},
+		"failure_behavior": {"type": "string", "minLength": 1},
+		"handoff_rules": {"type": "array", "items": {"type": "string"}},
+		"non_success_statuses": {"type": "array", "uniqueItems": true, "items": {"enum": ["BLOCKED", "DEFERRED", "NOT_TESTED", "UNKNOWN", "PARTIAL", "FAILED", "REWORK_REQUIRED"]}},
+		"authority_intersection": {"const": "INTERSECTION_REQUIRED"},
+		"metadata_reconciliation": {"type": "object", "additionalProperties": false, "required": ["registry_source", "conflict_status"], "properties": {"registry_source": {"const": "registry/agents.yaml"}, "conflict_status": {"const": "REWORK_REQUIRED"}}}
+	}
+}

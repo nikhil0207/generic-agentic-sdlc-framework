@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://generic-agentic-sdlc.invalid/schemas/provider-contract.schema.json",
+  "title": "Optional Provider Contract Foundation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["provider_id", "provider_type", "provider_version_expected", "lifecycle_status", "mode", "installation_type", "transport", "executable_or_endpoint", "health_check", "connection_timeout_seconds", "execution_timeout_seconds", "allowed_agents", "evidence_authority", "fallback_behavior", "failure_status", "secret_references", "license_identifier", "license_verification_status", "provenance_requirements", "audit_enabled", "runtime_disable", "rollback"],
+  "properties": {
+    "provider_id": {"enum": ["graphify", "headroom"]},
+    "provider_type": {"enum": ["CODE_INTELLIGENCE", "CONTEXT_OPTIMIZATION"]},
+    "provider_version_expected": {"type": "string"},
+    "provider_version_observed": {"type": "string"},
+    "lifecycle_status": {"enum": ["EXPERIMENTAL", "ACTIVE", "DISABLED"]},
+    "mode": {"enum": ["DISABLED", "SHADOW", "ENABLED"]},
+    "installation_type": {"const": "EXTERNAL"},
+    "transport": {"enum": ["HTTP", "EXECUTABLE"]},
+    "executable_or_endpoint": {"type": "string"},
+    "health_check": {"type": "object", "additionalProperties": false, "required": ["active", "operation"], "properties": {"active": {"type": "boolean"}, "operation": {"type": "string"}}},
+    "connection_timeout_seconds": {"type": "integer", "minimum": 1, "maximum": 60},
+    "execution_timeout_seconds": {"type": "integer", "minimum": 1, "maximum": 60},
+    "allowed_agents": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^(00|05|10|15|17|20|30|40|50|60|70|80|90|100)-[a-z0-9-]+$"}},
+    "evidence_authority": {"enum": ["SUPPLEMENTAL_ONLY", "NONE"]},
+    "fallback_behavior": {"type": "string", "minLength": 1},
+    "failure_status": {"enum": ["BLOCKED", "REWORK_REQUIRED", "FAILED"]},
+    "secret_references": {"type": "array", "items": {"type": "string"}},
+    "license_identifier": {"type": "string"},
+    "license_verification_status": {"enum": ["UNVERIFIED", "VERIFIED"]},
+    "provenance_requirements": {"const": "REQUIRED"},
+    "audit_enabled": {"const": true},
+    "runtime_disable": {"type": "object", "additionalProperties": false, "required": ["allowed", "scope"], "properties": {"allowed": {"const": true}, "scope": {"enum": ["WORKFLOW", "SESSION"]}}},
+    "rollback": {"type": "object", "additionalProperties": false, "required": ["enabled", "baseline"], "properties": {"enabled": {"const": true}, "baseline": {"enum": ["NO_PROVIDER", "ORIGINAL_CONTEXT"]}}},
+    "arguments_or_request_mapping": {"type": "object"},
+    "extensions": {"type": "object"}
+  },
+  "allOf": [
+    {"if": {"properties": {"provider_id": {"const": "graphify"}}}, "then": {"properties": {"provider_type": {"const": "CODE_INTELLIGENCE"}, "evidence_authority": {"const": "SUPPLEMENTAL_ONLY"}}}},
+    {"if": {"properties": {"provider_id": {"const": "headroom"}}}, "then": {"properties": {"provider_type": {"const": "CONTEXT_OPTIMIZATION"}, "evidence_authority": {"const": "NONE"}}}},
+    {
+      "if": {"properties": {"mode": {"const": "DISABLED"}}},
+      "then": {
+        "properties": {
+          "health_check": {
+            "type": "object",
+            "properties": {"active": {"const": false}}
+          }
+        }
+      }
+    }
+  ]
+}

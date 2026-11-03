@@ -1,0 +1,5 @@
+version: 1.0.0
+success_statuses: [PASS, PASSED]
+non_success_statuses: [UNKNOWN, BLOCKED, DEFERRED, PARTIAL, NOT_TESTED, FAILED, REWORK_REQUIRED, CLARIFICATION_REQUIRED]
+workflow_statuses: [NOT_STARTED, IN_PROGRESS, AWAITING_HUMAN_APPROVAL, APPROVED, REJECTED, REWORK_REQUIRED, BLOCKED, COMPLETED]
+rule: Only explicit PASS or PASSED is success. No unresolved state may be coerced to success.

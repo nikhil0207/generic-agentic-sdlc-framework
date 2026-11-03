@@ -1,0 +1,11 @@
+id: DEFECT
+description: Azure DevOps/VSTS or manually supplied defect resolution
+steps:
+  - {id: ROUTE, agent: 05-prompt-router, gate: NONE}
+  - {id: DISCOVERY, agent: 15-codebase-analyzer, gate: POLICY}
+  - {id: REQUIREMENTS, agent: 10-business-analyst, gate: POLICY, optional: true}
+  - {id: ARCHITECTURE, agent: 20-solution-architect, gate: POLICY, optional: true}
+  - {id: ROOT_CAUSE_AND_FIX, agent: 40-developer, gate: POLICY}
+  - {id: REVIEW, agent: 50-reviewer-overseer, gate: PASS_REQUIRED}
+  - {id: TEST, agent: 60-test-engineer, gate: PASS_REQUIRED}
+  - {id: DOCUMENTATION, agent: 100-documentation, gate: POLICY}

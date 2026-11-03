@@ -1,0 +1,6 @@
+id: RELEASE
+description: Build package and controlled release preparation
+steps:
+  - {id: READINESS, agent: 50-reviewer-overseer, gate: PASS_REQUIRED}
+  - {id: BUILD, agent: 90-build-deploy, gate: RELEASE_APPROVAL}
+  - {id: DOCUMENTATION, agent: 100-documentation, gate: POLICY}

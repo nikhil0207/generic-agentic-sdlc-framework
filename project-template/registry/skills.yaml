@@ -1,0 +1,150 @@
+version: 1.1.0
+schema_version: 1.1.0
+skills:
+  - id: architecture-design
+    name: Architecture Design
+    version: 1.1.0
+    purpose: Design traceable solution architecture from approved requirements.
+    applicability: Architecture and governed design work.
+    location: .github/skills/architecture-design/SKILL.md
+    owner_agent: 20-solution-architect
+    invoking_agent_allowlist: [20-solution-architect, 40-developer, 50-reviewer-overseer]
+    lifecycle_phases: [ARCHITECTURE, DEVELOPMENT, REVIEW]
+    inputs: [approved_requirements, repository_constraints]
+    outputs: [architecture_design, traceability, adr_candidates]
+    evidence_requirements: [FACT, INFERENCE, ASSUMPTION, UNKNOWN, RECOMMENDATION]
+    allowed_operations: [read, search]
+    prohibited_operations: [approve, merge, deploy, workflow_state_change, database_remediation, security_remediation, silent_handoff, status_coercion]
+    authority_inheritance: INTERSECTION_REQUIRED
+    approval_behavior: HUMAN_OR_ORCHESTRATOR_GATE_ONLY
+    provider_dependencies: []
+    framework_compatibility: '>=1.1.0 <2.0.0'
+    metadata_reconciliation: {source: registry, front_matter_required: true, conflict_status: REWORK_REQUIRED}
+    integrity_metadata: {hash_algorithm: SHA-256, content_hash: NOT_COMPUTED}
+    lifecycle_status: ACTIVE
+  - id: decision-recording
+    name: Decision Recording
+    version: 1.1.0
+    purpose: Record material delivery decisions consistently.
+    applicability: Requirements, architecture, implementation, testing, and scope decisions.
+    location: .github/skills/decision-recording/SKILL.md
+    owner_agent: 00-sdlc-orchestrator
+    invoking_agent_allowlist: [00-sdlc-orchestrator, 20-solution-architect, 40-developer, 50-reviewer-overseer, 100-documentation]
+    lifecycle_phases: [REQUIREMENTS, ARCHITECTURE, DEVELOPMENT, REVIEW, DOCUMENTATION]
+    inputs: [decision_context, alternatives, rationale]
+    outputs: [decision_record, traceability_update]
+    evidence_requirements: [FACT, INFERENCE, ASSUMPTION, UNKNOWN, RECOMMENDATION]
+    allowed_operations: [read, search, edit]
+    prohibited_operations: [approve, merge, deploy, workflow_state_change, database_remediation, security_remediation, silent_handoff, status_coercion]
+    authority_inheritance: INTERSECTION_REQUIRED
+    approval_behavior: HUMAN_OR_ORCHESTRATOR_GATE_ONLY
+    provider_dependencies: []
+    framework_compatibility: '>=1.1.0 <2.0.0'
+    metadata_reconciliation: {source: registry, front_matter_required: true, conflict_status: REWORK_REQUIRED}
+    integrity_metadata: {hash_algorithm: SHA-256, content_hash: NOT_COMPUTED}
+    lifecycle_status: ACTIVE
+  - id: requirements-analysis
+    name: Requirements Analysis
+    version: 1.1.0
+    purpose: Turn goals and source statements into atomic testable requirements.
+    applicability: Requirements analysis and acceptance criteria.
+    location: .github/skills/requirements-analysis/SKILL.md
+    owner_agent: 10-business-analyst
+    invoking_agent_allowlist: [10-business-analyst, 20-solution-architect, 40-developer, 60-test-engineer]
+    lifecycle_phases: [REQUIREMENTS, ARCHITECTURE, DEVELOPMENT, TEST]
+    inputs: [goals, source_specifications, stakeholder_statements]
+    outputs: [requirements, acceptance_criteria, traceability]
+    evidence_requirements: [FACT, INFERENCE, ASSUMPTION, UNKNOWN, RECOMMENDATION]
+    allowed_operations: [read, search, edit]
+    prohibited_operations: [approve, merge, deploy, workflow_state_change, database_remediation, security_remediation, silent_handoff, status_coercion]
+    authority_inheritance: INTERSECTION_REQUIRED
+    approval_behavior: HUMAN_OR_ORCHESTRATOR_GATE_ONLY
+    provider_dependencies: []
+    framework_compatibility: '>=1.1.0 <2.0.0'
+    metadata_reconciliation: {source: registry, front_matter_required: true, conflict_status: REWORK_REQUIRED}
+    integrity_metadata: {hash_algorithm: SHA-256, content_hash: NOT_COMPUTED}
+    lifecycle_status: ACTIVE
+  - id: tdd-implementation
+    name: TDD Implementation
+    version: 1.1.0
+    purpose: Implement approved work through a red-green-refactor verification loop.
+    applicability: Approved development and defect-fix work.
+    location: .github/skills/tdd-implementation/SKILL.md
+    owner_agent: 40-developer
+    invoking_agent_allowlist: [40-developer, 50-reviewer-overseer, 60-test-engineer]
+    lifecycle_phases: [DEVELOPMENT, REVIEW, TEST]
+    inputs: [approved_task, requirements, acceptance_criteria, architecture]
+    outputs: [implementation, test_evidence, change_traceability]
+    evidence_requirements: [FACT, INFERENCE, UNKNOWN, RECOMMENDATION]
+    allowed_operations: [read, search, edit, execute]
+    prohibited_operations: [approve, merge, deploy, workflow_state_change, database_remediation, security_remediation, silent_handoff, status_coercion]
+    authority_inheritance: INTERSECTION_REQUIRED
+    approval_behavior: HUMAN_OR_ORCHESTRATOR_GATE_ONLY
+    provider_dependencies: []
+    framework_compatibility: '>=1.1.0 <2.0.0'
+    metadata_reconciliation: {source: registry, front_matter_required: true, conflict_status: REWORK_REQUIRED}
+    integrity_metadata: {hash_algorithm: SHA-256, content_hash: NOT_COMPUTED}
+    lifecycle_status: ACTIVE
+  - id: testing-strategy
+    name: Testing Strategy
+    version: 1.1.0
+    purpose: Design and execute requirement-based automated testing.
+    applicability: Unit, integration, negative, boundary, security, and regression testing.
+    location: .github/skills/testing-strategy/SKILL.md
+    owner_agent: 60-test-engineer
+    invoking_agent_allowlist: [50-reviewer-overseer, 60-test-engineer, 70-automation-engineer]
+    lifecycle_phases: [REVIEW, TEST, AUTOMATION]
+    inputs: [requirements, acceptance_criteria, risk_register]
+    outputs: [test_conditions, test_evidence, coverage_traceability]
+    evidence_requirements: [FACT, INFERENCE, UNKNOWN, RECOMMENDATION]
+    allowed_operations: [read, search, execute]
+    prohibited_operations: [approve, merge, deploy, workflow_state_change, database_remediation, security_remediation, silent_handoff, status_coercion]
+    authority_inheritance: INTERSECTION_REQUIRED
+    approval_behavior: HUMAN_OR_ORCHESTRATOR_GATE_ONLY
+    provider_dependencies: []
+    framework_compatibility: '>=1.1.0 <2.0.0'
+    metadata_reconciliation: {source: registry, front_matter_required: true, conflict_status: REWORK_REQUIRED}
+    integrity_metadata: {hash_algorithm: SHA-256, content_hash: NOT_COMPUTED}
+    lifecycle_status: ACTIVE
+  - id: scope-control
+    name: Scope Control
+    version: 1.1.0
+    purpose: Enforce approved scope, minimum change, and governance stops.
+    applicability: Cross-cutting scope and gate checks.
+    location: .github/skills/scope-control/SKILL.md
+    owner_agent: 00-sdlc-orchestrator
+    invoking_agent_allowlist: [00-sdlc-orchestrator, 05-prompt-router, 40-developer, 50-reviewer-overseer]
+    lifecycle_phases: [ROUTE, DISCOVERY, REQUIREMENTS, ARCHITECTURE, DEVELOPMENT, REVIEW]
+    inputs: [approved_scope, requested_change, workflow_state]
+    outputs: [scope_decision, stop_condition, scope_evidence]
+    evidence_requirements: [FACT, INFERENCE, UNKNOWN, RECOMMENDATION]
+    allowed_operations: [read, search]
+    prohibited_operations: [approve, merge, deploy, workflow_state_change, database_remediation, security_remediation, silent_handoff, status_coercion]
+    authority_inheritance: INTERSECTION_REQUIRED
+    approval_behavior: HUMAN_OR_ORCHESTRATOR_GATE_ONLY
+    provider_dependencies: []
+    framework_compatibility: '>=1.1.0 <2.0.0'
+    metadata_reconciliation: {source: registry, front_matter_required: true, conflict_status: REWORK_REQUIRED}
+    integrity_metadata: {hash_algorithm: SHA-256, content_hash: NOT_COMPUTED}
+    lifecycle_status: ACTIVE
+  - id: evidence-grounding
+    name: Evidence Grounding
+    version: 1.1.0
+    purpose: Classify evidence and prevent unsupported conclusions or status coercion.
+    applicability: Cross-cutting evidence, provenance, and non-success handling.
+    location: .github/skills/evidence-grounding/SKILL.md
+    owner_agent: 00-sdlc-orchestrator
+    invoking_agent_allowlist: [00-sdlc-orchestrator, 10-business-analyst, 15-codebase-analyzer, 20-solution-architect, 40-developer, 50-reviewer-overseer]
+    lifecycle_phases: [DISCOVERY, REQUIREMENTS, ARCHITECTURE, DEVELOPMENT, REVIEW]
+    inputs: [source_material, evidence_claim, workflow_state]
+    outputs: [classified_evidence, provenance_record, status_decision]
+    evidence_requirements: [FACT, INFERENCE, ASSUMPTION, UNKNOWN, RECOMMENDATION, PROJECT_DECLARED_EVIDENCE, CODE_INTELLIGENCE_EVIDENCE]
+    allowed_operations: [read, search]
+    prohibited_operations: [approve, merge, deploy, workflow_state_change, database_remediation, security_remediation, silent_handoff, status_coercion]
+    authority_inheritance: INTERSECTION_REQUIRED
+    approval_behavior: HUMAN_OR_ORCHESTRATOR_GATE_ONLY
+    provider_dependencies: []
+    framework_compatibility: '>=1.1.0 <2.0.0'
+    metadata_reconciliation: {source: registry, front_matter_required: true, conflict_status: REWORK_REQUIRED}
+    integrity_metadata: {hash_algorithm: SHA-256, content_hash: NOT_COMPUTED}
+    lifecycle_status: ACTIVE

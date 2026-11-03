@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "type": "command",
+        "command": "python .github/hooks/scripts/audit_event.py",
+        "windows": "python .github\\hooks\\scripts\\audit_event.py",
+        "timeout": 10
+      }
+    ],
+    "PostToolUse": [
+      {
+        "type": "command",
+        "command": "python .github/hooks/scripts/audit_event.py",
+        "windows": "python .github\\hooks\\scripts\\audit_event.py",
+        "timeout": 10
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "python .github/hooks/scripts/audit_event.py",
+        "windows": "python .github\\hooks\\scripts\\audit_event.py",
+        "timeout": 10
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+id: TECHNOLOGY_HEALTH
+description: Optional technology lifecycle assessment
+steps:
+  - {id: ROUTE, agent: 05-prompt-router, gate: NONE}
+  - {id: DISCOVERY, agent: 15-codebase-analyzer, gate: POLICY}
+  - {id: LIFECYCLE, agent: 17-technology-lifecycle-analyst, gate: POLICY}
+  - {id: DOCUMENTATION, agent: 100-documentation, gate: POLICY}

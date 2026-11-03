@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Structured Agent Handoff",
+  "type": "object",
+  "required": ["source_agent", "target_agent", "objective", "inputs", "artifacts", "decisions", "constraints", "assumptions", "risks", "open_questions", "blocking_issues", "evidence", "required_approval", "recommended_next_action", "status"],
+  "properties": {
+    "source_agent": {"type": "string"}, "target_agent": {"type": "string"}, "objective": {"type": "string"},
+    "inputs": {"type": "array"}, "artifacts": {"type": "array"}, "decisions": {"type": "array"}, "constraints": {"type": "array"},
+    "assumptions": {"type": "array"}, "risks": {"type": "array"}, "open_questions": {"type": "array"}, "blocking_issues": {"type": "array"},
+    "evidence": {"type": "array"}, "required_approval": {"type": ["string", "null"]}, "recommended_next_action": {"type": "string"}, "status": {"type": "string"}
+  },
+  "additionalProperties": true
+}

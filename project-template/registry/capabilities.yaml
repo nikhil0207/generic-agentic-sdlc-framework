@@ -1,0 +1,16 @@
+version: 1.0.0
+capabilities:
+  route: [05-prompt-router]
+  orchestrate: [00-sdlc-orchestrator]
+  requirements: [10-business-analyst]
+  repository_analysis: [15-codebase-analyzer]
+  lifecycle_analysis: [17-technology-lifecycle-analyst]
+  architecture: [20-solution-architect]
+  user_experience: [30-uiux-engineer]
+  product_code_change: [40-developer]
+  independent_review: [50-reviewer-overseer]
+  functional_testing: [60-test-engineer]
+  test_automation: [70-automation-engineer]
+  security_performance: [80-security-performance-engineer]
+  build_release: [90-build-deploy]
+  documentation: [100-documentation]

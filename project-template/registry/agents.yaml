@@ -1,0 +1,16 @@
+version: 1.0.0
+agents:
+  - {id: 00-sdlc-orchestrator, name: SDLC Orchestrator, required: true, writes_product_code: false}
+  - {id: 05-prompt-router, name: Prompt and Routing Agent, required: true, writes_product_code: false}
+  - {id: 10-business-analyst, name: Business Analyst, required: false, writes_product_code: false}
+  - {id: 15-codebase-analyzer, name: Codebase Analyzer, required: true, writes_product_code: false}
+  - {id: 17-technology-lifecycle-analyst, name: Technology Lifecycle Analyst, required: false, writes_product_code: false}
+  - {id: 20-solution-architect, name: Solution Architect, required: false, writes_product_code: false}
+  - {id: 30-uiux-engineer, name: UI/UX Engineer, required: false, writes_product_code: false}
+  - {id: 40-developer, name: Developer, required: false, writes_product_code: true}
+  - {id: 50-reviewer-overseer, name: Reviewer and Overseer, required: false, writes_product_code: false}
+  - {id: 60-test-engineer, name: Test Engineer, required: false, writes_product_code: false}
+  - {id: 70-automation-engineer, name: Automation Engineer, required: false, writes_product_code: false}
+  - {id: 80-security-performance-engineer, name: Security and Performance Engineer, required: false, writes_product_code: false, manual_only: true}
+  - {id: 90-build-deploy, name: Build and Deploy Engineer, required: false, writes_product_code: false}
+  - {id: 100-documentation, name: Documentation Agent, required: false, writes_product_code: false}

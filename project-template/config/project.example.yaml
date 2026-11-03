@@ -1,0 +1,87 @@
+version: 1.0.0
+project:
+  name: example-project
+  repository_root: .
+execution_policy:
+  mode: HYBRID
+  auto_phases: [DISCOVERY, REQUIREMENTS]
+optional_agents:
+  technology_lifecycle_analysis: false
+  ui_ux: true
+  security_performance: false
+work_items:
+  provider: azure_devops
+  url: ""
+  project: ""
+  api_version: "7.1"
+  auth_environment_variable: AZDO_PAT
+  behavior: DISABLED_WHEN_URL_EMPTY
+technology_lifecycle:
+  warn_high_months: 6
+  warn_medium_months: 12
+  warn_planning_months: 24
+  authoritative_sources_required: true
+  evidence_documents: []
+  discover_repository_documents: true
+  require_evidence_reconciliation: true
+  require_conditional_recommendation: true
+guardrails:
+  architecture: [preserve existing architecture unless an approved ADR changes it]
+  development: [make the minimum necessary change, reuse established project patterns]
+  testing: [do not report unexecuted tests as passed]
+  security: [never place credentials in prompts source logs or evidence]
+  database: [schema changes require human approval]
+  deployment: [production deployment requires human approval]
+coding_standards:
+  documents: []
+  discover_repository_conventions: true
+evidence:
+  hash_algorithm: SHA-256
+  require_source_commit_when_available: true
+optional_providers:
+  graphify:
+    provider_id: graphify
+    provider_type: CODE_INTELLIGENCE
+    provider_version_expected: ""
+    lifecycle_status: EXPERIMENTAL
+    mode: DISABLED
+    installation_type: EXTERNAL
+    transport: EXECUTABLE
+    executable_or_endpoint: ""
+    health_check: {active: false, operation: ""}
+    connection_timeout_seconds: 10
+    execution_timeout_seconds: 30
+    allowed_agents: [15-codebase-analyzer, 20-solution-architect, 40-developer, 50-reviewer-overseer]
+    evidence_authority: SUPPLEMENTAL_ONLY
+    fallback_behavior: CONTINUE_WITH_DIRECT_REPOSITORY_ANALYSIS
+    failure_status: REWORK_REQUIRED
+    secret_references: []
+    license_identifier: ""
+    license_verification_status: UNVERIFIED
+    provenance_requirements: REQUIRED
+    audit_enabled: true
+    runtime_disable: {allowed: true, scope: WORKFLOW}
+    rollback: {enabled: true, baseline: NO_PROVIDER}
+  headroom:
+    provider_id: headroom
+    provider_type: CONTEXT_OPTIMIZATION
+    provider_version_expected: ""
+    lifecycle_status: EXPERIMENTAL
+    mode: DISABLED
+    installation_type: EXTERNAL
+    transport: EXECUTABLE
+    executable_or_endpoint: ""
+    health_check: {active: false, operation: ""}
+    connection_timeout_seconds: 10
+    execution_timeout_seconds: 30
+    allowed_agents: [05-prompt-router, 15-codebase-analyzer, 20-solution-architect, 40-developer, 50-reviewer-overseer, 60-test-engineer, 100-documentation]
+    evidence_authority: NONE
+    fallback_behavior: USE_ORIGINAL_CONTEXT
+    failure_status: REWORK_REQUIRED
+    secret_references: []
+    license_identifier: ""
+    license_verification_status: UNVERIFIED
+    provenance_requirements: REQUIRED
+    audit_enabled: true
+    runtime_disable: {allowed: true, scope: WORKFLOW}
+    rollback: {enabled: true, baseline: ORIGINAL_CONTEXT}

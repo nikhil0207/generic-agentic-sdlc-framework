@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","required":["workflow_id","work_id","current_phase","status","history"],"properties":{"workflow_id":{"type":"string"},"work_id":{"type":"string"},"current_phase":{"type":"string"},"status":{"type":"string"},"history":{"type":"array"}}}

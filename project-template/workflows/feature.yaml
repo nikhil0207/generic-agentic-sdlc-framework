@@ -1,0 +1,15 @@
+id: FEATURE
+description: Governed new feature delivery
+steps:
+  - {id: ROUTE, agent: 05-prompt-router, gate: NONE}
+  - {id: DISCOVERY, agent: 15-codebase-analyzer, gate: POLICY}
+  - {id: REQUIREMENTS, agent: 10-business-analyst, gate: POLICY}
+  - {id: ARCHITECTURE, agent: 20-solution-architect, gate: ARCHITECTURE_APPROVAL}
+  - {id: UI_UX, agent: 30-uiux-engineer, gate: UI_UX_APPROVAL, optional: true}
+  - {id: DEVELOPMENT, agent: 40-developer, gate: POLICY}
+  - {id: REVIEW, agent: 50-reviewer-overseer, gate: PASS_REQUIRED}
+  - {id: TEST, agent: 60-test-engineer, gate: PASS_REQUIRED}
+  - {id: AUTOMATION, agent: 70-automation-engineer, gate: POLICY, optional: true}
+  - {id: SECURITY_PERFORMANCE, agent: 80-security-performance-engineer, gate: HUMAN, optional: true}
+  - {id: BUILD_RELEASE, agent: 90-build-deploy, gate: RELEASE_APPROVAL}
+  - {id: DOCUMENTATION, agent: 100-documentation, gate: POLICY}
